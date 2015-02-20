@@ -11,7 +11,6 @@
 
 class client
 {
-	protected $api_url = 'http://www.worldxbox.fr/forum_dev_api';
 	protected $key_store = 'keys.txt';
 
 	public function get_auth_link()
