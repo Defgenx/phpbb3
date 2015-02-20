@@ -1,13 +1,8 @@
 api_user_login_controller:
     path: /login
     defaults: { _controller: api.controller.users:login }
-    methods: [GET]
+    methods: [POST]
 
-
-api_user_logout_controller:
-    path: /logout
-    defaults: { _controller: api.controller.users:logout }
-    methods: [GET]
 
 api_user_data_controller:
     path: /data

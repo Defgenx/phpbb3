@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 abstract class auth_app
 {
-    const AUTH_API_KEY = '';
+    const AUTH_API_KEY = 'a08d3402c9ccafe695e6e5f077bacb44a032d984c6300dd58c6d0a9f6ffa79d9';
 
     /**
      * Constructor
@@ -41,7 +41,7 @@ abstract class auth_app
         $request->enable_super_globals();
         if (isset($_SERVER['HTTP_CLIENT_IP'])
             || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-            || !in_array($request->variable('server_true_ip', ''), array(
+            || !in_array($_SERVER['REMOTE_ADDR'], array(
                 '37.59.39.109',
             ))
             || !isset($_SERVER['USER'])
