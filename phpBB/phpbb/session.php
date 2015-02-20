@@ -403,7 +403,13 @@ class session
 				{
 					$referer_valid = $this->validate_referer($check_referer_path);
 				}
-
+//
+//                print $u_ip." => ";
+//                print $s_ip." \n ";
+//                print $s_browser." => ";
+//                print $u_browser."\n";
+//                print $s_forwarded_for." => ";
+//                print $u_forwarded_for." \n ";
 				if ($u_ip === $s_ip && $s_browser === $u_browser && $s_forwarded_for === $u_forwarded_for && $referer_valid)
 				{
 					$session_expired = false;

@@ -1,4 +1,19 @@
 services:
+    api.controller.users:
+        class: phpbb\api\controller\users
+        arguments:
+            - @user
+            - @controller.helper
+            - @template
+            - @request
+            - @config
+            - @auth
+
+    api.controller.distant.auth:
+        class: phpbb\api\extensions\auth_app
+        arguments:
+            - @request
+
     api.controller.auth:
         class: phpbb\api\controller\auth
         arguments:

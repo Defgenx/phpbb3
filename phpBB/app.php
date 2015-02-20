@@ -21,11 +21,15 @@ define('IN_PHPBB', true);
 $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
+require($phpbb_root_path . 'includes/functions_user.' . $phpEx);
+require($phpbb_root_path . 'includes/functions_module.' . $phpEx);
 
 // Start session management
 $user->session_begin();
 $auth->acl($user->data);
 $user->setup('app');
+
+extract($phpbb_dispatcher->trigger_event('core.index_modify_page_title', compact($vars)));
 
 /* @var $http_kernel \Symfony\Component\HttpKernel\HttpKernel */
 $http_kernel = $phpbb_container->get('http_kernel');

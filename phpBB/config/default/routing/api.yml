@@ -1,3 +1,4 @@
-api_auth:
-    resource: "api/auth.yml"
-    prefix: /auth
+api_user:
+    resource: "api/user.yml"
+    prefix: /distant/user
+
