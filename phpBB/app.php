@@ -29,8 +29,6 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup('app');
 
-extract($phpbb_dispatcher->trigger_event('core.index_modify_page_title', compact($vars)));
-
 /* @var $http_kernel \Symfony\Component\HttpKernel\HttpKernel */
 $http_kernel = $phpbb_container->get('http_kernel');
 

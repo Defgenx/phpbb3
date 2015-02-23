@@ -100,7 +100,26 @@ class users extends auth_app
     }
 
     public function get_data() {
-		global $user;
+        global $user;
         return $this->sendResponse(['status' => 200, 'data' => $user]);
+    }
+
+    public function logout() {
+        global $user;
+        if ($user->data['is_registered']) {
+            $user->session_kill();
+            $user->session_begin();
+            $bResponse = true;
+        }
+        else {
+            $bResponse = false;
+        }
+        return $this->sendResponse(['status' => 200, 'data' => $bResponse]);
+    }
+
+    public function get_config() {
+        global $config;
+
+        return $this->sendResponse(['status' => 200, 'data' => $config->getIterator()]);
     }
 }
