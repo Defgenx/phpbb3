@@ -23,6 +23,7 @@ $phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
 require($phpbb_root_path . 'includes/functions_user.' . $phpEx);
 require($phpbb_root_path . 'includes/functions_module.' . $phpEx);
+include($phpbb_root_path . 'includes/functions_posting.' . $phpEx);
 
 // Start session management
 $user->session_begin();

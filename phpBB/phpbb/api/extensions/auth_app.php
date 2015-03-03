@@ -18,6 +18,7 @@ use phpbb\controller\helper;
 use phpbb\api\exception\api_exception;
 use phpbb\api\exception\invalid_key_exception;
 use phpbb\request\request;
+use phpbb\db\driver\driver;
 use phpbb\template\template;
 use phpbb\user;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -29,6 +30,8 @@ abstract class auth_app
 {
     const AUTH_API_KEY = 'a08d3402c9ccafe695e6e5f077bacb44a032d984c6300dd58c6d0a9f6ffa79d9';
 
+    protected $database;
+
     /**
      * Constructor
      *
@@ -36,6 +39,7 @@ abstract class auth_app
      */
     function __construct(request $request)
     {
+        global $db;
         // This check prevents access to debug front controllers that are deployed by accident to production servers.
         // Feel free to remove this, extend it, or make something more sophisticated.
         $request->enable_super_globals();
@@ -65,6 +69,10 @@ abstract class auth_app
         if ($request->variable('auth_token', '') !== self::AUTH_API_KEY) {
             header('HTTP/1.0 403 Forbidden');
             exit('You are not allowed to access this file. Contact the admin for more information.');
+        }
+
+        if (!is_null($db)) {
+            $this->database = $db;
         }
     }
 
